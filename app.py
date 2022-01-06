@@ -64,7 +64,10 @@ while True:
         # Click job card
         job.click()
         time.sleep(2)
-        job_details_list = scrape_data()
+        try:
+            job_details_list = scrape_data()
+        except:
+            print('Failed to scrape')
 
         # Append new list to summary list
         job_details_list_master.append(job_details_list)
