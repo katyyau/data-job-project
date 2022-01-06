@@ -66,11 +66,10 @@ while True:
         time.sleep(2)
         try:
             job_details_list = scrape_data()
+            # Append new list to summary list
+            job_details_list_master.append(job_details_list)
         except:
             print('Failed to scrape')
-
-        # Append new list to summary list
-        job_details_list_master.append(job_details_list)
 
     # Check if it is at the last page
     last_page = driver.find_element(By.CSS_SELECTOR, "#FooterPageNav li:last-child")
