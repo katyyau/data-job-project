@@ -49,9 +49,8 @@ def scrape_data():
 
     return [data_id, employer_name, job_title, work_location, job_description, company_overview_json, scrapped_date]
 
-
+i = 1
 while True:
-    i = 1
     # Get the job list
     job_list = driver.find_elements(By.CSS_SELECTOR, "ul[data-test='jlGrid'] li")
 
@@ -94,13 +93,13 @@ while True:
 
     # Create a dataframe and save as csv
     datetimestr = datetime.now().strftime("%Y%m%d_%H%M%S")
-    csv_name = "job_details_list_master_" + datetimestr + str(i) + ".csv"
+    csv_name = "job_details_list_master_" + datetimestr + "p" + str(i) + ".csv"
     pd.DataFrame(job_details_list_master).to_csv(csv_name, index=False)
 
     # Upload csv to cloud storage
     storage_client = storage.Client(credentials=credentials)
     bucket = storage_client.bucket("daily-job-details-list-master")
-    blob = bucket.blob(daily-job-details-list-master/csv_name)
+    blob = bucket.blob("daily-job-details-list-master/"+ csv_name)
     blob.upload_from_filename(csv_name)
 
     i += 1
