@@ -93,7 +93,7 @@ while True:
 
     # Create a dataframe and save as csv
     datetimestr = datetime.now().strftime("%Y%m%d_%H%M%S")
-    csv_name = "job_details_list_master_" + datetimestr + "p" + str(i) + ".csv"
+    csv_name = "job_details_list_master_" + datetimestr + "_p" + str(i) + ".csv"
     pd.DataFrame(job_details_list_master).to_csv(csv_name, index=False)
 
     # Upload csv to cloud storage
